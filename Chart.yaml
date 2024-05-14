@@ -1,0 +1,21 @@
+apiVersion: v2
+type: application
+name: mautrix-discord
+version: 0.0.1
+appVersion: 0.6.5
+annotations:
+  artifacthub.io/images: |
+    - name: discord
+      image: dock.mau.dev/mautrix/discord:v0.6.5
+description: A Matrix-Discord puppeting bridge.
+home: https://matrix.to/#/#discord:maunium.net
+keywords:
+  - chat
+  - matrix
+  - discord
+maintainers:
+  - email: loic.kalbermatter@pulseflow.ch
+    name: Loic Kalbermatter
+sources:
+  - https://github.com/mautrix/discord
+  - https://code.pulseflow.ch/PulseDev/mautrix-discord

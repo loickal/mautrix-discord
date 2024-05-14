@@ -1,0 +1,21 @@
+{{- if .Values.config }}
+{{- if .Values.config.appservice }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mautrix-discord.fullname" . }}
+  labels:
+{{ include "mautrix-discord.labels" . | indent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  clusterIP: {{ .Values.service.clusterIP | quote }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
+  ports:
+    - port: {{ required "need config.appservice.port" .Values.config.appservice.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "mautrix-discord.selectorLabels" . | nindent 4 }}
+{{- end }}
+{{- end }}
